@@ -215,17 +215,19 @@ class NiubizSessionRequest(BaseModel):
 # -------------------------------------------------------------------------
 # App.
 # -------------------------------------------------------------------------
-app = FastAPI(title="Tienda Virtual con agentes MCP", version="1.0.0")
+from contextlib import asynccontextmanager
+
+@asynccontextmanager
+async def lifespan(app):
+    await LC_ADAPTER.init()
+    yield
+
+app = FastAPI(title="Tienda Virtual con agentes MCP", version="1.0.0", lifespan=lifespan)
 
 # CORS abierto: util en demo local.
 app.add_middleware(
     CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"],
 )
-
-
-@app.on_event("startup")
-async def startup():
-    await LC_ADAPTER.init()
 
 STATIC_DIR = Path(__file__).parent / "static"
 
@@ -357,7 +359,7 @@ async def chat(
     ses.ultimo_agente = resp.agente or ""
 
     # 6. Escribir en Notion de manera limpia (write-through)
-    
+    STATE.persistir_sesion(usuario_id)
 
     return ChatResponse(
         agente=resp.agente or "orquestador",
