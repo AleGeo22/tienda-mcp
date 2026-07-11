@@ -2,7 +2,7 @@
 
 Proyecto del curso **Automatización Inteligente de Procesos** (Ing. de
 Sistemas e IA, 2026‑10). Construye un equipo de agentes especializados que
-atienden a un cliente de una tienda de electrónica peruana, coordinándose a
+atienden a un cliente de una tienda virtual de ropa peruana, coordinándose a
 través de un **servidor MCP** que expone la lógica de la tienda como tools
 con schemas validados por Pydantic.
 
