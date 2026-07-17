@@ -2,7 +2,7 @@
 run_escenarios.py
 =================
 Corre los 3 escenarios principales del sistema multi-agente y genera el
-reporte de metricas en docs/METRICAS.md (Criterio 4 y 5 de la rubrica).
+# Ejecuta de principio a fin todos los flujos e imprime resultados.
 
 Escenarios:
   1) Feliz       : busca laptop -> agrega -> paga.
@@ -134,8 +134,9 @@ async def main() -> None:
     import json
     print(json.dumps(global_m.resumen(), indent=2, ensure_ascii=False))
 
-    global_m.guardar_markdown(DOCS / "METRICAS.md")
-    global_m.guardar_json(DOCS / "metricas.json")
+    # Se comenta la generacion de archivos estaticos en docs/
+    # global_m.guardar_markdown(DOCS / "METRICAS.md")
+    # global_m.guardar_json(DOCS / "metricas.json")
     print(f"\nReportes generados en {DOCS}")
 
 

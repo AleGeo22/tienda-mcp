@@ -104,7 +104,7 @@ async def main() -> int:
     print()
     print("=" * 60)
     print("[OK] mcp.config.json valido. Pega ese mismo JSON en Antigravity.")
-    print("     Lee docs/CONFIGURAR_ANTIGRAVITY.md para los pasos exactos.")
+    print("     Lee docs/DEVELOPMENT.md para los pasos exactos.")
     print("=" * 60)
     return 0
 
